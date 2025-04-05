@@ -3,6 +3,7 @@ import { Suspense } from 'react' // Import Suspense from react
 import { Routes, Route } from 'react-router-dom' // Router-specific imports
 import routes from './routes' // Your routes file
 import Navbar from "./components/Navbar";
+import Footer from './components/Footer';
 function App() {
   return (
     <div className="App">
@@ -18,6 +19,7 @@ function App() {
           ))}
         </Routes>
       </Suspense>
+      <Footer/>
     </div>
   )
 }

@@ -1,0 +1,104 @@
+.dc-btn {
+  text-decoration: none;
+  display: block;
+  border: 1px solid #1abc9c;
+  border-radius: 4px;
+  text-align: center;
+  color: #333;
+  padding: 6px;
+  margin-top: 4px;
+}
+
+.franchise-box {
+  background-color: #0057a4; /* Blue background */
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 8px 15px;
+  font-size: 18px;
+  white-space: nowrap; /* Prevents text wrapping */
+}
+
+.franchise-lines {
+  display: flex;
+  flex-direction: column;
+  /* margin-left: 10px; */
+  gap: 2px;
+}
+
+.line {
+  /* width: 500px; Adjust the length of the lines */
+  border-top: 2px solid #ccc; /* Grey horizontal lines */
+}
+
+/* Aside bar */
+.aside-bar {
+  height: 410px;
+}
+
+.aside-bar ul {
+  list-style: none;
+  padding: 0px !important;
+}
+
+.aside-bar ul li a {
+  display: block; /* Makes the Link fill the entire li */
+  width: 100%; /* Ensures full width */
+  padding: 6.5px 16px;
+  text-decoration: none; /* Removes underline from links */
+  color: inherit; /* Keeps text color consistent */
+}
+
+.aside-bar li:hover {
+  border: 1px solid #dedede;
+}
+
+.description-section {
+  height: 405px;
+  /* overflow-y: scroll; */
+}
+
+.aside-bar a {
+  padding: 15px 8px;
+}
+
+/* Style arrows */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px;
+  height: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-size: 60% 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Optional: make arrows white */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: brightness(0) invert(1);
+}
+
+.collapse-btn {
+  color: #333;
+  padding: 0px;
+  border: none;
+  background-color: transparent;
+  font-weight: 600;
+}
+.collapse-btn:hover {
+  color: #000;
+}

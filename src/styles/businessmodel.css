@@ -1,0 +1,11 @@
+.background-banner {
+    background-image: url("https://www.franchiseapply.com/images/number.jpg");
+    padding: 150px 0;
+  }
+  
+  .details-section {
+    width: 100%;
+    padding: 25px 0px;
+    color: #ffffff;
+    background: #ef232394;
+  }

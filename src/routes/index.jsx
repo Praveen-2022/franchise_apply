@@ -1,19 +1,55 @@
 // src/routes/index.jsx
-import { lazy } from 'react'
+import { lazy } from "react";
 
 const routes = [
   {
-    path: '/',
-    component: lazy(() => import('../pages/Home')),
+    path: "/",
+    component: lazy(() => import("../pages/Home")),
   },
   {
-    path: '/explore/:id',
-    component: lazy(() => import('../pages/Explore')),
+    path: "/blog",
+    component: lazy(() => import("../pages/Blog")),
   },
   {
-    path: '*',
-    component: lazy(() => import('../pages/NotFound')),
+    path: "/buy-business",
+    component: lazy(() => import("../pages/Buy_Existing_Business")),
   },
-]
+  {
+    path: "/investor-registration",
+    component: lazy(() => import("../pages/RegisterBrand")),
+  },
+  {
+    path: "/master-franchise",
+    component: lazy(() => import("../pages/MasterFranchise")),
+  },
+  {
+    path: "/explore/:id",
+    component: lazy(() => import("../pages/Explore")),
+  },
+  {
+    path: "/interviews",
+    component: lazy(() => import("../pages/Interviews")),
+  },
+  {
+    path: "/buy-magazine",
+    component: lazy(() => import("../pages/BuyMagazine")),
+  },
+  {
+    path: "/automobiles",
+    component: lazy(() => import("../pages/Automobiles")),
+  },
+  {
+    path: "/brand-franchise-business-model/:id",
+    component: lazy(() => import("../pages/BusinessModel")),
+  },
+  {
+    path: "*",
+    component: lazy(() => import("../pages/NotFound")),
+  },
+  {
+    path: "/videos",
+    component: lazy(() => import("../pages/videos")),
+  },
+];
 
-export default routes
+export default routes;

@@ -35,6 +35,7 @@
     color: #191a19;
     position: relative;
     border-bottom: 1px solid #191a19;
+    z-index: 10;
     /* overflow: hidden; */
   }
   

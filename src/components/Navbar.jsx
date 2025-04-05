@@ -7,7 +7,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [buySellDropdownOpen, setBuySellDropdownOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
-  
+
   const handleLinkClick = () => {
     setMenuOpen(false);
     setBuySellDropdownOpen(false);
@@ -58,7 +58,7 @@ const Navbar = () => {
               </ul>
             </li>
             <li>
-              <Link to="/register_brand" onClick={handleLinkClick}>
+              <Link to="/investor-registration" onClick={handleLinkClick}>
                 Register Your Brand
               </Link>
             </li>
@@ -72,29 +72,45 @@ const Navbar = () => {
                 className={
                   servicesDropdownOpen ? "dropdown-menu show" : "dropdown-menu"
                 }
-              >
+              > 
+              {/* todo: Sir se puch ke dynamic banana hai */}
                 <li>
-                  <Link to="/service1" onClick={handleLinkClick}>
+                  <Link
+                    to="/brand-franchise-business-model/service1"
+                    onClick={handleLinkClick}
+                  >
                     Brand Franchise Business Model
                   </Link>
                 </li>
                 <li>
-                  <Link to="/service2" onClick={handleLinkClick}>
+                  <Link
+                    to="/brand-franchise-business-model/service2"
+                    onClick={handleLinkClick}
+                  >
                     Franchise Consultancy
                   </Link>
                 </li>
                 <li>
-                  <Link to="/service3" onClick={handleLinkClick}>
+                  <Link
+                    to="/brand-franchise-business-model/service3"
+                    onClick={handleLinkClick}
+                  >
                     Marketing & Lead Generation for Brands
                   </Link>
                 </li>
                 <li>
-                  <Link to="/service4" onClick={handleLinkClick}>
+                  <Link
+                    to="/brand-franchise-business-model/service4"
+                    onClick={handleLinkClick}
+                  >
                     Commercial Property Registration
                   </Link>
                 </li>
                 <li>
-                  <Link to="/service5" onClick={handleLinkClick}>
+                  <Link
+                    to="/brand-franchise-business-model/service5"
+                    onClick={handleLinkClick}
+                  >
                     Franchise Development Program
                   </Link>
                 </li>

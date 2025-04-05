@@ -1,0 +1,12 @@
+/* Blog CSS */
+
+.aside-heading {
+  background-color: #d9534f;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 14px;
+}
+.aside-blog-div {
+  padding: 6px 10px;
+  border-bottom: 1px solid #dedede;
+}

@@ -1,0 +1,99 @@
+/* brand section CSS */
+
+.invester-bar .ul-div {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding-left: 0 !important;
+  }
+  
+  .invester-bar ul {
+    padding: 0 !important;
+  }
+  
+  .invester-bar li {
+    list-style: none;
+    padding: 7px 20px;
+  }
+  
+  .invester-bar li:hover {
+    border: 1px solid #dedede;
+    background-color: #e1e1e1;
+  }
+  
+  .aside-bar li:hover {
+    padding: 9px 20px;
+    border: 1px solid #dedede;
+    background-color: #e1e1e1;
+  }
+  
+  .carousel-container {
+    margin: auto;
+  }
+  
+  .image-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .carousel-img {
+    width: 180px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  /* Navigation Arrows */
+  .carousel-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+  }
+  
+  .carousel-arrow {
+    font-size: 30px;
+    cursor: pointer;
+    color: #333;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+  
+  .carousel-arrow:hover {
+    background: rgba(255, 255, 255, 1);
+  }
+
+  .franchise-box {
+    background-color: #0057a4; /* Blue background */
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 8px 15px;
+    font-size: 14px;
+    white-space: nowrap; /* Prevents text wrapping */
+  }
+  
+  .franchise-lines {
+    display: flex;
+    flex-direction: column;
+    /* margin-left: 10px; */
+    gap: 2px; 
+  }
+  
+  .line {
+    /* width: 500px; Adjust the length of the lines */
+    border-top: 2px solid #ccc; /* Grey horizontal lines */
+  }
+
+  .dc-btn {
+    text-decoration: none;
+    display: block;
+    border: 1px solid #1abc9c;
+    border-radius: 4px;
+    text-align: center;
+    color: #333;
+    padding: 6px;
+    margin-top: 4px;
+  }

@@ -1,0 +1,39 @@
+.custom-select {
+  border-radius: 0px !important;
+}
+.sorting-options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 10px;
+}
+
+.sort-option {
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  position: relative;
+  padding: 8px 12px;
+  transition: color 0.3s ease-in-out;
+}
+
+.sort-option::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background-color: red;
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+.sort-option:hover {
+  /* color: red; */
+}
+
+.sort-option:hover::after {
+  width: 100%;
+  left: 0;
+}
