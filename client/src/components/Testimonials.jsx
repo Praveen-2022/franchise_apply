@@ -1,46 +1,47 @@
 import React, { useState, useEffect } from "react";
 import { Carousel } from "react-bootstrap";
-import "../styles/videos.css";
+import { FaStar } from "react-icons/fa";
+import "../styles/testimonials.css";
 
 const testimonialsList = [
   {
     name: "Jagriti Kumawat",
     role: "Co-Founder (DICEST Education Pvt Ltd)",
-    videoUrl: "https://www.youtube.com/embed/xyz123",
+    videoUrl: "https://www.youtube.com/embed/44ll1dAH-w4?si=nFoMi40pxLL1zonI",
   },
   {
     name: "Mr Deepen Barai",
     role: "Director - Speedforce",
-    videoUrl: "https://www.youtube.com/embed/abc456",
+    videoUrl: "https://www.youtube.com/embed/44ll1dAH-w4?si=nFoMi40pxLL1zonI",
   },
   {
     name: "Dr. Jitesh Jain",
     role: "Founder & CEO - EDURISHI",
-    videoUrl: "https://www.youtube.com/embed/def789",
+    videoUrl: "https://www.youtube.com/embed/44ll1dAH-w4?si=nFoMi40pxLL1zonI",
   },
   {
     name: "John Doe",
     role: "Marketing Head - XYZ Corp",
-    videoUrl: "https://www.youtube.com/embed/ghi789",
+    videoUrl: "https://www.youtube.com/embed/44ll1dAH-w4?si=nFoMi40pxLL1zonI",
   },
   {
     name: "Jane Smith",
     role: "CTO - ABC Pvt Ltd",
-    videoUrl: "https://www.youtube.com/embed/jkl012",
+    videoUrl: "https://www.youtube.com/embed/44ll1dAH-w4?si=nFoMi40pxLL1zonI",
   },
   {
     name: "Robert Brown",
     role: "CEO - GlobalTech",
-    videoUrl: "https://www.youtube.com/embed/mno345",
+    videoUrl: "https://www.youtube.com/embed/44ll1dAH-w4?si=nFoMi40pxLL1zonI",
   },
   {
     name: "Alice Johnson",
     role: "Founder - Startup Inc.",
-    videoUrl: "https://www.youtube.com/embed/pqr678",
+    videoUrl: "https://www.youtube.com/embed/44ll1dAH-w4?si=nFoMi40pxLL1zonI",
   },
 ];
 
-const Videos = () => {
+const Testimonials = () => {
   const [cardsPerSlide, setCardsPerSlide] = useState(3);
 
   // Responsive adjustments
@@ -55,10 +56,12 @@ const Videos = () => {
 
   // Calculate number of slides
   const totalSlides = Math.ceil(testimonialsList.length / cardsPerSlide);
-  
+
   return (
-    <div className="container mt-5">
-      <h2 className="text-center mb-4">CLIENT TESTIMONIALS</h2>
+    <div className="container my-5">
+      <h2 className="text-center my-4 text-uppercase" style={{ color: "#6f6f6f" }}>
+        CLIENT TESTIMONIALS
+      </h2>
 
       <Carousel indicators={true} controls={false} interval={3000}>
         {Array.from({ length: totalSlides }).map((_, index) => (
@@ -78,10 +81,16 @@ const Videos = () => {
                           frameBorder="0"
                           allowFullScreen
                         ></iframe>
-                        <span className="rating-badge">⭐⭐⭐⭐⭐</span>
                       </div>
-                      <h4 className="mt-3">{testimonial.name}</h4>
-                      <p>{testimonial.role}</p>
+                      <div className="text-center">
+                        <h5 className="">Brijesh Patel</h5>
+                        <p>Founder & Director - Doctor Garage</p>
+                        <div className="">
+                          {[...Array(5)].map((_, idx) => (
+                            <FaStar key={idx} className="m-1 stars" />
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -93,4 +102,4 @@ const Videos = () => {
   );
 };
 
-export default Videos;
+export default Testimonials;

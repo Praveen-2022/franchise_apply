@@ -18,6 +18,8 @@ import { RiSubtractLine } from "react-icons/ri";
 import "../styles/Home.css";
 import MagazineCarousel from "../components/MagazineCarousel";
 import Gallery from "../components/Gallery";
+import Testimonials from "../components/Testimonials";
+import EventCarousel from "../components/EventCarousel";
 
 const Home = () => {
   const [open, setOpen] = useState(false);
@@ -154,7 +156,9 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="container">{/* Events Franchise */}</div>
+      <div className="container">
+        <EventCarousel/>
+        {/* Events Franchise */}</div>
 
       <div className="container border rounded shadow-sm my-4">
         {/* Top Franchise */}
@@ -624,12 +628,136 @@ const Home = () => {
         </div>
       </div>
 
+      {/* Blog Section */}
+      <div className="container mt-4">
+        <div className="d-flex justify-content-between py-1 blog-div align-items-center">
+          <h5>BLOG AND NEWS</h5>
+          <Link to="/blog" className="link-btn">
+            VIEW ALL
+          </Link>
+        </div>
+
+        <div className="row my-4">
+          <div className="col-12 col-lg-4">
+            <Link to="/blog" className="blog-link">
+              <div className="blog-card">
+                <div className="image-container">
+                  <img
+                    src="https://franchiseapply.com/admin/uploads/blog/408941.jpg"
+                    alt="Education Franchise"
+                    className="card-image"
+                  />
+                  <div className="overlay">
+                    <div className="text-content">
+                      <p className="title">
+                        SEVEN-STEP GUIDE TO LAUNCH AN EDUCATIONAL FRANCHISE
+                        BUSINESS IN INDIA
+                      </p>
+                      <p className="date">09-Sep-2024</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+
+            <div className="blog-card">
+              <div className="image-container">
+                <img
+                  src="https://franchiseapply.com/admin/uploads/blog/408941.jpg"
+                  alt="Education Franchise"
+                  className="card-image"
+                />
+                <div className="overlay">
+                  <div className="text-content">
+                    <p className="title">
+                      SEVEN-STEP GUIDE TO LAUNCH AN EDUCATIONAL FRANCHISE
+                      BUSINESS IN INDIA
+                    </p>
+                    <p className="date">09-Sep-2024</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="blog-card">
+              <div className="image-container">
+                <img
+                  src="https://franchiseapply.com/admin/uploads/blog/408941.jpg"
+                  alt="Education Franchise"
+                  className="card-image"
+                />
+                <div className="overlay">
+                  <div className="text-content">
+                    <p className="title">
+                      SEVEN-STEP GUIDE TO LAUNCH AN EDUCATIONAL FRANCHISE
+                      BUSINESS IN INDIA
+                    </p>
+                    <p className="date">09-Sep-2024</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-12 col-lg-8">
+            <div className="detail-blog-card">
+              {/* Blog Image */}
+              <div className="image-container">
+                <img
+                  src="https://franchiseapply.com/admin/uploads/blog/408941.jpg"
+                  alt="Education Franchise"
+                  className="card-img-top"
+                />
+              </div>
+
+              {/* Blog Content */}
+              <div className="bottom-card-body">
+                {/* Author & Date */}
+                <div className="d-flex align-items-center text-muted small mb-2">
+                  <span className="me-2">👤 Admin</span>
+                  <span>26-Oct-2024</span>
+                </div>
+
+                {/* Blog Title */}
+                <h5 className="blog-title">
+                  India's Fastest Growing Pre-School - ICON Nurturing Innocence
+                  Preschool
+                </h5>
+
+                {/* Subtitle */}
+                <p className="blog-subtitle">
+                  Cultivating Bright Futures: The Inspirational Journey of Icon
+                  Nurturing Innocence - A Preschool Chain.
+                </p>
+
+                {/* Description */}
+                <p className="blog-mini">
+                  Despite the cut-throat competition in early childhood
+                  education, Icon Nurturing Innocence Preschool is shining high
+                  as a welfare Nurturing Innocence Preschool is shining high as
+                  a welfare reformer...
+                </p>
+
+                {/* Read More */}
+                <Link to="/blog" className="read-more">
+                  READ MORE
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="container">{/* New Arrivals Brand */}</div>
 
-      <div className="container">{/* testimonials */}</div>
       <div className="container">
-        <Gallery/>
-        {/* Gallery */}</div>
+        {/* testimonials */}
+        <Testimonials />
+      </div>
+
+      <div className="container">
+        <Gallery />
+        {/* Gallery */}
+      </div>
 
       <div className="container">
         {/* Franchise Magazine */}

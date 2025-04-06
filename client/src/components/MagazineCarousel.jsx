@@ -79,10 +79,11 @@ const MagazineCarousel = () => {
   return (
     <>
       {/* // done */}
-      <div className="carousel-container">
+      <div className="container">
         <h2 className="text-center text-uppercase my-4" style={{ color: "#6f6f6f" }}>
           Franchise Magazine
         </h2>
+
         <Carousel
           activeIndex={index}
           onSelect={setIndex}
@@ -96,7 +97,7 @@ const MagazineCarousel = () => {
                 <Carousel.Item key={i}>
                   <div className="row justify-content-center">
                     {magazines.slice(i, i + itemsPerSlide).map((mag) => (
-                      <div key={mag.id} className="col-12 col-sm-6 col-md-3">
+                      <div key={mag.id} className="col-12 col-sm-6 col-md-3 p-2">
                         <img
                           className="img-fluid"
                           src={mag.src}

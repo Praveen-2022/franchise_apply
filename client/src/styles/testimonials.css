@@ -25,9 +25,7 @@
   
   .carousel-indicators {
     position: absolute;
-    bottom: -45px; /* Adjust to move outside the carousel */
-    /* left: 50%;
-    transform: translateX(-50%); */
+    bottom: -45px;
   }
   
   .carousel-indicators [data-bs-target] {
@@ -50,3 +48,6 @@
     }
   }
 
+.stars{
+  color:orange;
+}

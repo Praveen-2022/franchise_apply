@@ -63,11 +63,10 @@ const MasterFranchise = () => {
         </div>
       </div>
 
-      <div className="container">
-        <div className="row border">
-          <div className="col-12 col-md-3 border">
-            <div
-              className="p-3 border rounded bg-white"           >
+      <div className="container my-5">
+        <div className="row">
+          <aside className="col-12 col-md-3 ">
+            <div className="p-3 border rounded bg-white">
               <div className="mb-2">
                 <label className="fw-bold">State:</label>
                 <select className="form-select">
@@ -84,8 +83,263 @@ const MasterFranchise = () => {
                 <button className="btn btn-primary">Search</button>
               </div>
             </div>
+          </aside>
+          <div className="col-12 col-md-9">
+            <div className="row">
+              <div className="col-12 col-md-4">
+                <div className="border m-1 shadow-sm rounded">
+                  <div className="d-flex align-items-center justify-content-center border m-1 rounded p-2 bg-light">
+                    {/* Image div */}
+                    <img
+                      src="https://franchiseapply.com/admin/uploads/brand_registration/1642240798_2.jpg"
+                      alt="automobile"
+                      className="img-fluid"
+                    />
+                  </div>
+                  <div className="p-2">
+                    {/* text div */}
+                    <p style={{ fontSize: "12px" }}>Automobiles</p>
+                    <p className="line-clamp-1 fw-semibold">
+                      Quick Auto Service - Two Wheeler Multi Brand Service
+                      Centre
+                    </p>
+                    <div className="d-flex justify-content-between py-1 align-items-center">
+                      <p
+                        className="mb-0 fw-bold"
+                        style={{ fontSize: "14px", color: "#6f6f6f" }}
+                      >
+                        Member:
+                      </p>
+                      <p
+                        className="mb-0"
+                        style={{ fontSize: "14px", color: "#6f6f6f" }}
+                      >
+                        Gold Member
+                      </p>
+                    </div>
+                    <div className="d-flex justify-content-between py-1 align-items-center">
+                      <p
+                        className="mb-0 fw-bold"
+                        style={{ fontSize: "14px", color: "#6f6f6f" }}
+                      >
+                        Category:
+                      </p>
+                      <p
+                        className="mb-0"
+                        style={{ fontSize: "14px", color: "#6f6f6f" }}
+                      >
+                        Education
+                      </p>
+                    </div>
+                    <div className="d-flex justify-content-between py-1 align-items-center">
+                      <p
+                        className="mb-0 fw-bold"
+                        style={{ fontSize: "14px", color: "#6f6f6f" }}
+                      >
+                        Investment:
+                      </p>
+                      <p
+                        className="mb-0 "
+                        style={{ fontSize: "14px", color: "#6f6f6f" }}
+                      >
+                        5Lacs - 8 Lacs
+                      </p>
+                    </div>
+
+                    <div className="d-flex justify-content-between align-items-center py-1">
+                      <p
+                        className="mb-0 fw-bold"
+                        style={{ fontSize: "14px", color: "#6f6f6f" }}
+                      >
+                        Space req:
+                      </p>
+                      <p
+                        className="mb-0 "
+                        style={{ fontSize: "14px", color: "#6f6f6f" }}
+                      >
+                        400 - 600 sq ft
+                      </p>
+                    </div>
+                    <button
+                      // href={card.link}
+                      className="btn btn-outline-primary w-100 mt-2"
+                      // onClick={() => handleExplore(card)}
+                    >
+                      EXPLORE
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="col-12 col-md-4">
+                <div className="border m-1 shadow-sm rounded">
+                  <div className="d-flex align-items-center justify-content-center border m-1 rounded p-2 bg-light">
+                    {/* Image div */}
+                    <img
+                      src="https://franchiseapply.com/admin/uploads/brand_registration/1642240798_2.jpg"
+                      alt="automobile"
+                      className="img-fluid"
+                    />
+                  </div>
+                  <div className="p-2">
+                    {/* text div */}
+                    <p style={{ fontSize: "12px" }}>Automobiles</p>
+                    <p className="line-clamp-1 fw-semibold">
+                      Quick Auto Service - Two Wheeler Multi Brand Service
+                      Centre
+                    </p>
+                    <div className="d-flex justify-content-between py-1 align-items-center">
+                      <p
+                        className="mb-0 fw-bold"
+                        style={{ fontSize: "14px", color: "#6f6f6f" }}
+                      >
+                        Member:
+                      </p>
+                      <p
+                        className="mb-0"
+                        style={{ fontSize: "14px", color: "#6f6f6f" }}
+                      >
+                        Gold Member
+                      </p>
+                    </div>
+                    <div className="d-flex justify-content-between py-1 align-items-center">
+                      <p
+                        className="mb-0 fw-bold"
+                        style={{ fontSize: "14px", color: "#6f6f6f" }}
+                      >
+                        Category:
+                      </p>
+                      <p
+                        className="mb-0"
+                        style={{ fontSize: "14px", color: "#6f6f6f" }}
+                      >
+                        Education
+                      </p>
+                    </div>
+                    <div className="d-flex justify-content-between py-1 align-items-center">
+                      <p
+                        className="mb-0 fw-bold"
+                        style={{ fontSize: "14px", color: "#6f6f6f" }}
+                      >
+                        Investment:
+                      </p>
+                      <p
+                        className="mb-0 "
+                        style={{ fontSize: "14px", color: "#6f6f6f" }}
+                      >
+                        5Lacs - 8 Lacs
+                      </p>
+                    </div>
+
+                    <div className="d-flex justify-content-between align-items-center py-1">
+                      <p
+                        className="mb-0 fw-bold"
+                        style={{ fontSize: "14px", color: "#6f6f6f" }}
+                      >
+                        Space req:
+                      </p>
+                      <p
+                        className="mb-0 "
+                        style={{ fontSize: "14px", color: "#6f6f6f" }}
+                      >
+                        400 - 600 sq ft
+                      </p>
+                    </div>
+                    <button
+                      // href={card.link}
+                      className="btn btn-outline-primary w-100 mt-2"
+                      // onClick={() => handleExplore(card)}
+                    >
+                      EXPLORE
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="col-12 col-md-4">
+                <div className="border m-1 shadow-sm rounded">
+                  <div className="d-flex align-items-center justify-content-center border m-1 rounded p-2 bg-light">
+                    {/* Image div */}
+                    <img
+                      src="https://franchiseapply.com/admin/uploads/brand_registration/1642240798_2.jpg"
+                      alt="automobile"
+                      className="img-fluid"
+                    />
+                  </div>
+                  <div className="p-2">
+                    {/* text div */}
+                    <p style={{ fontSize: "12px" }}>Automobiles</p>
+                    <p className="line-clamp-1 fw-semibold">
+                      Quick Auto Service - Two Wheeler Multi Brand Service
+                      Centre
+                    </p>
+                    <div className="d-flex justify-content-between py-1 align-items-center">
+                      <p
+                        className="mb-0 fw-bold"
+                        style={{ fontSize: "14px", color: "#6f6f6f" }}
+                      >
+                        Member:
+                      </p>
+                      <p
+                        className="mb-0"
+                        style={{ fontSize: "14px", color: "#6f6f6f" }}
+                      >
+                        Gold Member
+                      </p>
+                    </div>
+                    <div className="d-flex justify-content-between py-1 align-items-center">
+                      <p
+                        className="mb-0 fw-bold"
+                        style={{ fontSize: "14px", color: "#6f6f6f" }}
+                      >
+                        Category:
+                      </p>
+                      <p
+                        className="mb-0"
+                        style={{ fontSize: "14px", color: "#6f6f6f" }}
+                      >
+                        Education
+                      </p>
+                    </div>
+                    <div className="d-flex justify-content-between py-1 align-items-center">
+                      <p
+                        className="mb-0 fw-bold"
+                        style={{ fontSize: "14px", color: "#6f6f6f" }}
+                      >
+                        Investment:
+                      </p>
+                      <p
+                        className="mb-0 "
+                        style={{ fontSize: "14px", color: "#6f6f6f" }}
+                      >
+                        5Lacs - 8 Lacs
+                      </p>
+                    </div>
+
+                    <div className="d-flex justify-content-between align-items-center py-1">
+                      <p
+                        className="mb-0 fw-bold"
+                        style={{ fontSize: "14px", color: "#6f6f6f" }}
+                      >
+                        Space req:
+                      </p>
+                      <p
+                        className="mb-0 "
+                        style={{ fontSize: "14px", color: "#6f6f6f" }}
+                      >
+                        400 - 600 sq ft
+                      </p>
+                    </div>
+                    <button
+                      // href={card.link}
+                      className="btn btn-outline-primary w-100 mt-2"
+                      // onClick={() => handleExplore(card)}
+                    >
+                      EXPLORE
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="col-12 col-md-9 border">1</div>
         </div>
       </div>
     </>
