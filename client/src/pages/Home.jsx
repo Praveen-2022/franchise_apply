@@ -20,6 +20,7 @@ import MagazineCarousel from "../components/MagazineCarousel";
 import Gallery from "../components/Gallery";
 import Testimonials from "../components/Testimonials";
 import EventCarousel from "../components/EventCarousel";
+import Brand from "../components/Brand";
 
 const Home = () => {
   const [open, setOpen] = useState(false);
@@ -747,7 +748,9 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="container">{/* New Arrivals Brand */}</div>
+      <div className="container">{/* New Arrivals Brand */}
+        <Brand/>
+      </div>
 
       <div className="container">
         {/* testimonials */}

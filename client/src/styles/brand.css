@@ -1,0 +1,69 @@
+.franchise-box {
+  background-color: #0057a4; /* Blue background */
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 8px 15px;
+  font-size: 18px;
+  white-space: nowrap; /* Prevents text wrapping */
+}
+
+.franchise-lines {
+  display: flex;
+  flex-direction: column;
+  /* margin-left: 10px; */
+  gap: 2px;
+}
+
+.line {
+  /* width: 500px; Adjust the length of the lines */
+  border-top: 2px solid #ccc; /* Grey horizontal lines */
+}
+
+.card {
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  filter: invert(100%);
+}
+
+.test-bg {
+  background-color: aqua;
+}
+
+.carousel .carousel-item {
+  transition: transform 0.6s ease-in-out;
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-item {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-item.active {
+  opacity: 1;
+}
+
+.gallery-item {
+  margin-right: 50px;
+}
+
+.gallery-item:last-child {
+  margin-right: 0; /* no extra space after the last item */
+}
+
+.custom-card {
+  width: 100%;
+}
+
+.d-flex.flex-wrap.custom-gap {
+  /* column-gap: 16px; */
+  /* row-gap: 0; */
+}
