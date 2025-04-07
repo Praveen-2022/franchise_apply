@@ -1,0 +1,13 @@
+.not-found-container {
+    margin-top: 10vh;
+    padding: 2rem;
+  }
+  
+  .not-found-container h1 {
+    font-size: 8rem;
+  }
+  
+  .not-found-container p {
+    margin-bottom: 1rem;
+  }
+  

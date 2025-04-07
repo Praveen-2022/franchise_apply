@@ -25,7 +25,7 @@ import Brand from "../components/Brand";
 const Home = () => {
   const [open, setOpen] = useState(false);
   return (
-    <>
+    <div div className="home-section">
       <div className="container my-4">
         <div className="row">
           <div className="col-12 col-md-4 franchise-section">
@@ -835,7 +835,7 @@ const Home = () => {
           )}
         </button>
       </div>
-    </>
+    </div>
   );
 };
 
