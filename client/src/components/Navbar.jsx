@@ -19,7 +19,9 @@ const Navbar = () => {
       <nav className="nav-bar">
         <div className="left-section">
           <div>
-            <h5 className="logo">Franchise Apply</h5>
+            <Link to="/">
+              <h5 className="logo">Franchise Apply</h5>
+            </Link>
           </div>
         </div>
 
@@ -72,8 +74,8 @@ const Navbar = () => {
                 className={
                   servicesDropdownOpen ? "dropdown-menu show" : "dropdown-menu"
                 }
-              > 
-              {/* todo: Sir se puch ke dynamic banana hai */}
+              >
+                {/* todo: Sir se puch ke dynamic banana hai */}
                 <li>
                   <Link
                     to="/brand-franchise-business-model/service1"
