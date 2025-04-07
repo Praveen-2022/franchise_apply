@@ -225,6 +225,66 @@
   color: #7c7c7c;
 }
 
+/* ///////////////// */
+.bottom-row {
+  padding: 13px 20px;
+  background-color: #f0eeee;
+}
+
+.bottom-link {
+  color: #191a19;
+  font-weight: 700;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.bottom-link:hover {
+  color: #337ab7;
+}
+
+.custom-dropdown {
+  width: 300px;
+  height: 40px;
+  padding: 0.375rem 0.75rem;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 0px !important;
+  background-color: #fff;
+  color: #333;
+  appearance: none; /* Removes default arrow */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+}
+
+.custom-dropdown:focus {
+  outline: none;
+  border-color: #666;
+  box-shadow: none; /* Remove Bootstrap's default focus shadow */
+}
+
+.search-button {
+  width: 120px;
+  height: 40px;
+  padding: 0.375rem 1.5rem;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #ff0000 !important; /* Red from the image */
+  border: none;
+  border-radius: 0px !important;
+  color: white !important;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #e60000 !important; /* Slightly darker red on hover */
+}
+
+.search-button:active {
+  background-color: #cc0000 !important; /* Even darker red on click */
+}
+
 @media (max-width: 480px) {
   /* .home-section {
     background: #000 !important;

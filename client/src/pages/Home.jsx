@@ -14,7 +14,7 @@ import { GiAtomicSlashes } from "react-icons/gi";
 import { MdPhonelink } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
 import { RiSubtractLine } from "react-icons/ri";
-
+import { MdDoubleArrow } from "react-icons/md";
 import "../styles/Home.css";
 import MagazineCarousel from "../components/MagazineCarousel";
 import Gallery from "../components/Gallery";
@@ -24,8 +24,135 @@ import Brand from "../components/Brand";
 
 const Home = () => {
   const [open, setOpen] = useState(false);
+  const [category, setCategory] = useState("");
+  const [investmentRange, setInvestmentRange] = useState("");
+
+  const cardData="";
+  const categories = [
+    "All Categories",
+    "Business Services",
+    "Food and Beverage",
+    "Retail",
+    "Dealers and Distributers",
+    "Beauty and Salon",
+    "Education",
+    "Automobiles",
+    "Health and Wellness",
+    "Electronics",
+    "Power and Energy",
+  ];
+
+  const investmentRanges = [
+    "Select Range",
+    "0 - 5 Lakhs",
+    "5 - 10 Lakhs",
+    "10 - 20 Lakhs",
+    "20 - 50 Lakhs",
+    "50+ Lakhs",
+  ];
+  const [filteredData, setFilteredData] = useState(cardData);
+  const handleSearch = () => {
+    const filtered = cardData.filter((card) => {
+      const categoryMatch =
+        category === "All Categories" ||
+        category === "" ||
+        card.category === category;
+      const investmentMatch =
+        investmentRange === "Select Range" ||
+        investmentRange === "" ||
+        checkInvestmentRange(card.investment);
+      return categoryMatch && investmentMatch;
+    });
+
+    setFilteredData(filtered);
+  };
+
+  const checkInvestmentRange = (investment) => {
+    const investmentValue = parseInt(investment.replace(/[^0-9]/g, ""), 10);
+
+    switch (investmentRange) {
+      case "0 - 5 Lakhs":
+        return investmentValue >= 0 && investmentValue <= 500000;
+      case "5 - 10 Lakhs":
+        return investmentValue > 500000 && investmentValue <= 1000000;
+      case "10 - 20 Lakhs":
+        return investmentValue > 1000000 && investmentValue <= 2000000;
+      case "20 - 50 Lakhs":
+        return investmentValue > 2000000 && investmentValue <= 5000000;
+      case "50+ Lakhs":
+        return investmentValue > 5000000;
+      default:
+        return true;
+    }
+  };
   return (
     <div div className="home-section">
+      <div className="row bottom-row m-0">
+        <div className="col-12 col-md-3 p-0">
+          <Link href="/" className="bottom-link">
+            GET CHANNEL PARTNERS :{" "}
+            <span style={{ color: "red", paddingLeft: "3px" }}>
+              {" "}
+              REGISTER NOW <MdDoubleArrow />
+            </span>
+          </Link>
+        </div>
+
+        {/* Filter section */}
+        <div className="col-12 col-md-6 p-0 search-bar">
+          <div className="row m-0 p-0 align-items-center justify-content-center">
+            <div className="col p-0">
+              <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                className="form-select custom-dropdown"
+              >
+                {categories.map((cat, index) => (
+                  <option key={index} value={cat}>
+                    {cat === "All Categories" ? "Select Category" : cat}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="col p-0">
+              <select
+                value={investmentRange}
+                onChange={(e) => setInvestmentRange(e.target.value)}
+                className="form-select custom-dropdown"
+              >
+                {investmentRanges.map((range, index) => (
+                  <option key={index} value={range}>
+                    {range === "Select Range" ? "Investment Range" : range}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="col p-0">
+              <button className="btn search-button" onClick={handleSearch}>
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-12 col-md-3 p-0">
+          <Link href="/" className="bottom-link">
+            EXPLORE YOUR :
+            <span style={{ color: "red", paddingLeft: "3px" }}>
+              {" "}
+              BRAND
+              <MdDoubleArrow />
+            </span>{" "}
+          </Link>
+          <Link href="/" className="bottom-link">
+            START A BUSINESS :{" "}
+            <span style={{ color: "red", paddingLeft: "3px" }}>
+              REGISTER NOW <MdDoubleArrow />
+            </span>{" "}
+          </Link>
+        </div>
+      </div>
+
       <div className="container my-4">
         <div className="row">
           <div className="col-12 col-md-4 franchise-section">
@@ -158,8 +285,9 @@ const Home = () => {
       </div>
 
       <div className="container">
-        <EventCarousel/>
-        {/* Events Franchise */}</div>
+        <EventCarousel />
+        {/* Events Franchise */}
+      </div>
 
       <div className="container border rounded shadow-sm my-4">
         {/* Top Franchise */}
@@ -748,8 +876,9 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="container">{/* New Arrivals Brand */}
-        <Brand/>
+      <div className="container">
+        {/* New Arrivals Brand */}
+        <Brand />
       </div>
 
       <div className="container">
