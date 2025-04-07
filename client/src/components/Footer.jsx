@@ -155,7 +155,9 @@ const Footer = () => {
                 alt="Franchise Magazine"
                 className="franchise-img"
               />
-              <button className="mt-3 subscribe-btn">Subscribe Now</button>
+              <div className="d-flex justify-content-center align-items-center">
+                <button className="mt-3 subscribe-btn">Subscribe Now</button>
+              </div>
             </div>
 
             {/* Services */}
