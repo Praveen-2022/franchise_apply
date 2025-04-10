@@ -216,65 +216,65 @@ const Home = () => {
 
       <div className="container">
         <div className="row">
-          <aside className="col-12 col-md-3 p-0 shadow-sm aside-bar">
-            <ul>
-              <li>
-                <Link to="/automobiles">
-                  <FaCar /> Automobiles
-                </Link>
-              </li>
-              <li>
-                <Link to="/beauty-and-salon">
-                  <MdFaceRetouchingNatural /> Beauty and Salon
-                </Link>
-              </li>
-              <li>
-                <Link to="/business-servicess">
-                  <FaTools /> Business Services
-                </Link>
-              </li>
-              <li>
-                <Link to="/dealers-and-distributers">
-                  <FaTruck /> Dealers and Distributors
-                </Link>
-              </li>
-              <li>
-                <Link to="/education">
-                  <FaBookReader /> Education
-                </Link>
-              </li>
-              <li>
-                <Link to="/health-and-wellness">
-                  <BsHeartPulse /> Health and Wellness
-                </Link>
-              </li>
-              <li>
-                <Link to="/food-and-beverage">
-                  <ImSpoonKnife /> Food and Beverage
-                </Link>
-              </li>
-              <li>
-                <Link to="/retail">
-                  <SiHomeassistantcommunitystore /> Retail
-                </Link>
-              </li>
-              <li>
-                <Link to="/courier-logistics">
-                  <FaBuildingWheat /> Courier Logistics
-                </Link>
-              </li>
-              <li>
-                <Link to="/power-and-energy">
-                  <GiAtomicSlashes /> Power and Energy
-                </Link>
-              </li>
-              <li>
-                <Link to="/electronics">
-                  <MdPhonelink /> Electronics
-                </Link>
-              </li>
-            </ul>
-          </aside>
+<aside className="col-12 col-md-3 p-0 shadow-sm aside-bar">
+  <ul>
+    <li>
+      <Link to="/category/automobiles">
+        <FaCar /> Automobiles
+      </Link>
+    </li>
+    <li>
+      <Link to="/category/beauty-and-salon">
+        <MdFaceRetouchingNatural /> Beauty and Salon
+      </Link>
+    </li>
+    <li>
+      <Link to="/category/business-services">
+        <FaTools /> Business Services
+      </Link>
+    </li>
+    <li>
+      <Link to="/category/dealers-and-distributors">
+        <FaTruck /> Dealers and Distributors
+      </Link>
+    </li>
+    <li>
+      <Link to="/category/education">
+        <FaBookReader /> Education
+      </Link>
+    </li>
+    <li>
+      <Link to="/category/health-and-wellness">
+        <BsHeartPulse /> Health and Wellness
+      </Link>
+    </li>
+    <li>
+      <Link to="/category/food-and-beverage">
+        <ImSpoonKnife /> Food and Beverage
+      </Link>
+    </li>
+    <li>
+      <Link to="/category/retail">
+        <SiHomeassistantcommunitystore /> Retail
+      </Link>
+    </li>
+    <li>
+      <Link to="/category/courier-logistics">
+        <FaBuildingWheat /> Courier Logistics
+      </Link>
+    </li>
+    <li>
+      <Link to="/category/power-and-energy">
+        <GiAtomicSlashes /> Power and Energy
+      </Link>
+    </li>
+    <li>
+      <Link to="/category/electronics">
+        <MdPhonelink /> Electronics
+      </Link>
+    </li>
+  </ul>
+</aside>
 
           <div className="col-12 col-md-9">
             <div className="carousel-container">

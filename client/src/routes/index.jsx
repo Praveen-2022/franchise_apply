@@ -27,8 +27,8 @@ const routes = [
     component: lazy(() => import("../pages/Explore")),
   },
   {
-    path: "/interviews",
-    component: lazy(() => import("../pages/Interviews")),
+    path: "/category/:name",
+    component: lazy(() => import("../pages/CategoryPage")),
   },
   {
     path: "/buy-magazine",

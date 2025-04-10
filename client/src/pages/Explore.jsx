@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { CiStar } from "react-icons/ci";
 import { FaThumbsUp, FaShareAlt } from "react-icons/fa";
 import "../styles/explore.css";
-import YouMakeLike from "../components/YouMakeLike";
+// import YouMakeLike from "../components/YouMakeLike";
 
 const Explore = () => {
   const { id } = useParams();
@@ -475,13 +475,13 @@ const Explore = () => {
         </div>
       </div>
 
-      <div>
+      {/* <div>
         <YouMakeLike
           currentId={id}
           category={currentFranchise?.category}
           data={TestData}
         />
-      </div>
+      </div> */}
     </div>
   );
 };
