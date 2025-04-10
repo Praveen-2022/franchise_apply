@@ -4,11 +4,14 @@ import routes from "./routes"; // Your routes file
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Loading from "./components/Loading";
+import ScrollToTop from "./components/ScrollToTop";
 <Loading />;
 function App() {
   return (
     <div className="App">
       <Navbar />
+      <ScrollToTop />
+
       <Suspense
         fallback={
           <div>

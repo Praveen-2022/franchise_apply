@@ -12,7 +12,7 @@ const FranchiseCard = ({ id, details = {} }) => {
     investment_required,
     required_floor_area,
   } = details;
-
+console.log(details);
   if (!logo_image || !franchise_name) {
     return null;
   }
@@ -56,7 +56,7 @@ const FranchiseCard = ({ id, details = {} }) => {
                   Space req :
                 </p>
                 <p
-                  className="mb-0 fw-bold line-clamp-1 w-100"
+                  className="mb-0 fw-bold text-end line-clamp-1 w-100"
                   style={{ fontSize: "14px", color: "#6f6f6f" }}
                 >
                   {required_floor_area}
