@@ -64,7 +64,7 @@ const Navbar = () => {
                 Register Your Brand
               </Link>
             </li>
-            <li
+            {/* <li
               className="dropdown"
               onMouseEnter={() => setServicesDropdownOpen(true)}
               onMouseLeave={() => setServicesDropdownOpen(false)}
@@ -74,9 +74,9 @@ const Navbar = () => {
                 className={
                   servicesDropdownOpen ? "dropdown-menu show" : "dropdown-menu"
                 }
-              >
+              > */}
                 {/* todo: Sir se puch ke dynamic banana hai */}
-                <li>
+                {/* <li>
                   <Link
                     to="/brand-franchise-business-model/service1"
                     onClick={handleLinkClick}
@@ -155,17 +155,17 @@ const Navbar = () => {
               >
                 FBO India
               </Link>
-            </li>
+            </li> */}
           </div>
 
-          <div className="auth-links">
+          {/* <div className="auth-links">
             <Link to="/login" onClick={handleLinkClick}>
               Login
             </Link>
             <Link to="/register" className="register" onClick={handleLinkClick}>
               Register
             </Link>
-          </div>
+          </div> */}
         </ul>
       </nav>
     </>

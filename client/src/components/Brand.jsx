@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Carousel } from "react-bootstrap";
 import "../styles/brand.css";
 
 const data = [
@@ -44,6 +43,8 @@ const Brand = () => {
   const [index, setIndex] = useState(0);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
+  const itemsPerSlide = windowWidth < 768 ? 1 : 4;
+
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
@@ -55,19 +56,7 @@ const Brand = () => {
       setIndex((prev) => (prev + 1) % data.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
-
-  const itemsPerSlide = windowWidth < 768 ? 1 : 4;
-
-  const getVisibleItems = () => {
-    return data
-      .slice(index, index + itemsPerSlide)
-      .concat(
-        index + itemsPerSlide > data.length
-          ? data.slice(0, index + itemsPerSlide - data.length)
-          : []
-      );
-  };
+  }, [itemsPerSlide]);
 
   const handlePrev = () => {
     setIndex((prev) => (prev - 1 + data.length) % data.length);
@@ -77,35 +66,43 @@ const Brand = () => {
     setIndex((prev) => (prev + 1) % data.length);
   };
 
+  const getTranslateValue = () => {
+    return `translateX(-${(index * 100) / data.length}%)`;
+  };
+
   return (
     <div className="container mt-5 border border-2 rounded shadow-sm py-2">
       <div className="d-flex align-items-center my-3">
-        <div className="franchise-box text-uppercase">
-          New arrivals Brand
-        </div>
+        <div className="franchise-box text-uppercase">New arrivals Brand</div>
         <div className="franchise-lines w-100">
           <div className="line"></div>
           <div className="line"></div>
         </div>
       </div>
 
-      <div className="d-flex justify-content-between gap-2">
-  {getVisibleItems().map((item) => (
-    <div
-      key={item.id}
-      className="custom-card border p-2 rounded"
-    >
-      <div className=" shadow-sm bg-light border rounded inner-box p-3">
-        <img
-          src={item.logo}
-          alt={item.name}
-          style={{ width: "150px" }}
-        />
+      <div className="carousel-wrapper overflow-hidden position-relative">
+        <div
+          className="carousel-inner-custom d-flex transition-slide"
+          style={{
+            transform: getTranslateValue(),
+            width: `${(data.length / itemsPerSlide) * 100}%`,
+          }}
+        >
+          {data.map((item) => (
+            <div
+              key={item.id}
+              className="custom-card border p-2 rounded"
+              style={{ width: `${100 / data.length}%` }}
+            >
+              <div className="shadow-sm bg-light border rounded inner-box p-3">
+                <img src={item.logo} alt={item.name} style={{ width: "150px" }} />
+              </div>
+              <h6 className="mt-2">{item.name}</h6>
+            </div>
+          ))}
+        </div>
       </div>
-      <h6 className="mt-2">{item.name}</h6>
-    </div>
-  ))}
-</div>
+
       <div className="d-flex justify-content-center mt-3">
         <button className="btn btn-secondary me-2" onClick={handlePrev}>
           &lt;

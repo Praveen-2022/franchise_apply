@@ -295,3 +295,14 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 }
+
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.image-sec{
+  height: 100px;
+}

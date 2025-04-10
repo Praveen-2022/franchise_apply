@@ -1,0 +1,18 @@
+@media (min-width: 768px) {
+    .carousel .card {
+      flex: 1 0 50%;
+      max-width: 50%;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .carousel .card {
+      flex: 1 0 25%;
+      max-width: 25%;
+    }
+  }
+  
+  .carousel .card {
+    margin: 0.5rem;
+  }
+  

@@ -1,0 +1,21 @@
+.explore-btn {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #dedede !important;
+    font-size: 14px;
+    padding: 8px 20px !important;
+  }
+  .explore-btn:hover {
+    background-color: #dedede !important;
+    color: #000;
+  }
+  
+  .border-color{
+    border-radius: 8px;
+    border: 1px solid #dedede;
+  }
+  
+  .description-section{
+    overflow-y: scroll;
+    height: 510px;
+  }

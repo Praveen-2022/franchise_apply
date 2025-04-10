@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, Card, Carousel, Collapse } from "react-bootstrap";
+import { Carousel, Collapse } from "react-bootstrap";
 import { FaCar } from "react-icons/fa";
 import { MdFaceRetouchingNatural } from "react-icons/md";
 import { FaTools } from "react-icons/fa";
 import { FaTruck } from "react-icons/fa";
-import { FcReading } from "react-icons/fc";
 import { BsHeartPulse } from "react-icons/bs";
 import { ImSpoonKnife } from "react-icons/im";
 import { SiHomeassistantcommunitystore } from "react-icons/si";
@@ -15,78 +14,110 @@ import { MdPhonelink } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
 import { RiSubtractLine } from "react-icons/ri";
 import { MdDoubleArrow } from "react-icons/md";
-import "../styles/Home.css";
-import MagazineCarousel from "../components/MagazineCarousel";
-import Gallery from "../components/Gallery";
-import Testimonials from "../components/Testimonials";
-import EventCarousel from "../components/EventCarousel";
+import { FaBookReader } from "react-icons/fa";
 import Brand from "../components/Brand";
+import { useNavigate } from "react-router-dom";
+import "../styles/Home.css";
 
+import { TestData } from "../constant/TestData";
 const Home = () => {
-  const [open, setOpen] = useState(false);
-  const [category, setCategory] = useState("");
-  const [investmentRange, setInvestmentRange] = useState("");
+  const navigate = useNavigate();
 
-  const cardData="";
   const categories = [
     "All Categories",
-    "Business Services",
-    "Food and Beverage",
-    "Retail",
-    "Dealers and Distributers",
-    "Beauty and Salon",
-    "Education",
     "Automobiles",
-    "Health and Wellness",
+    "Beauty and Salon",
+    "Business Services",
+    "Courier Logistics",
+    "Dealers and Distributors",
+    "Education",
     "Electronics",
+    "Food and Beverage",
+    "Health and Beverage",
     "Power and Energy",
+    "Retail",
   ];
 
   const investmentRanges = [
-    "Select Range",
-    "0 - 5 Lakhs",
-    "5 - 10 Lakhs",
-    "10 - 20 Lakhs",
-    "20 - 50 Lakhs",
-    "50+ Lakhs",
+    "Investment Range",
+    "10k - 3 Lakhs",
+    "3 Lakhs - 5 Lakhs",
+    "5 Lakhs - 10 Lakhs",
+    "10 Lakhs - 20 Lakhs",
+    "20 Lakhs- 50 Lakhs",
+    "50 Lakhs- 1 Cr",
+    "More Than 2 Cr",
   ];
-  const [filteredData, setFilteredData] = useState(cardData);
+
+  // 🧠 Convert investment strings to numbers for comparison
+  const parseInvestment = (str) => {
+    if (!str) return [0, 0];
+
+    const normalized = str
+      .toLowerCase()
+      .replace(/inr|gst|,/gi, "")
+      .replace(/\s+/g, "")
+      .replace(/k/g, "000")
+      .replace(/lakhs?/g, "00000")
+      .replace(/lakh/g, "00000")
+      .replace(/cr/g, "0000000")
+      .match(/\d+/g);
+
+    if (!normalized || normalized.length === 0) return [0, 0];
+
+    const nums = normalized.map(Number);
+    return [Math.min(...nums), Math.max(...nums)];
+  };
+
+  const [selectedCategory, setSelectedCategory] = useState("All Categories");
+  const [selectedInvestment, setSelectedInvestment] =
+    useState("Investment Range");
+  const [filteredData, setFilteredData] = useState(Object.entries(TestData));
+  const [visibleCount, setVisibleCount] = useState(20);
+
   const handleSearch = () => {
-    const filtered = cardData.filter((card) => {
-      const categoryMatch =
-        category === "All Categories" ||
-        category === "" ||
-        card.category === category;
-      const investmentMatch =
-        investmentRange === "Select Range" ||
-        investmentRange === "" ||
-        checkInvestmentRange(card.investment);
-      return categoryMatch && investmentMatch;
-    });
+    let filtered = Object.entries(TestData);
+
+    // Category filter
+    if (selectedCategory !== "All Categories") {
+      filtered = filtered.filter(
+        ([, item]) => item.category === selectedCategory
+      );
+    }
+
+    // Investment filter
+    if (selectedInvestment && selectedInvestment !== "Investment Range") {
+      const [min, max] = parseInvestment(selectedInvestment);
+
+      filtered = filtered.filter(([_, item]) => {
+        const [itemMin, itemMax] = parseInvestment(
+          item.details.investment_required
+        );
+        return (
+          (itemMin >= min && itemMin <= max) ||
+          (itemMax >= min && itemMax <= max) ||
+          (itemMin <= min && itemMax >= max) // full range overlap
+        );
+      });
+    }
 
     setFilteredData(filtered);
+    setVisibleCount(20); // Reset visible count on new search
   };
 
-  const checkInvestmentRange = (investment) => {
-    const investmentValue = parseInt(investment.replace(/[^0-9]/g, ""), 10);
-
-    switch (investmentRange) {
-      case "0 - 5 Lakhs":
-        return investmentValue >= 0 && investmentValue <= 500000;
-      case "5 - 10 Lakhs":
-        return investmentValue > 500000 && investmentValue <= 1000000;
-      case "10 - 20 Lakhs":
-        return investmentValue > 1000000 && investmentValue <= 2000000;
-      case "20 - 50 Lakhs":
-        return investmentValue > 2000000 && investmentValue <= 5000000;
-      case "50+ Lakhs":
-        return investmentValue > 5000000;
-      default:
-        return true;
-    }
+  const handleExplore = (id) => {
+    navigate(`/explore/${id}`);
   };
+
+  const showMore = () => {
+    setVisibleCount((prev) => prev + 20);
+  };
+
+  const visibleData = filteredData.slice(0, visibleCount);
+  console.log(visibleData);
   return (
     <div div className="home-section">
+      {/* Bottom Filter Section */}
       <div className="row bottom-row m-0">
         <div className="col-12 col-md-3 p-0">
           <Link href="/" className="bottom-link">
@@ -103,32 +134,28 @@ const Home = () => {
           <div className="row m-0 p-0 align-items-center justify-content-center">
             <div className="col p-0">
               <select
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
                 className="form-select custom-dropdown"
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
               >
-                {categories.map((cat, index) => (
-                  <option key={index} value={cat}>
-                    {cat === "All Categories" ? "Select Category" : cat}
-                  </option>
+                {categories.map((cat) => (
+                  <option key={cat}>{cat}</option>
                 ))}
               </select>
             </div>
             <div className="col p-0">
               <select
-                value={investmentRange}
-                onChange={(e) => setInvestmentRange(e.target.value)}
                 className="form-select custom-dropdown"
+                value={selectedInvestment}
+                onChange={(e) => setSelectedInvestment(e.target.value)}
               >
-                {investmentRanges.map((range, index) => (
-                  <option key={index} value={range}>
-                    {range === "Select Range" ? "Investment Range" : range}
-                  </option>
+                {investmentRanges.map((range) => (
+                  <option key={range}>{range}</option>
                 ))}
               </select>
             </div>
             <div className="col p-0">
-              <button className="btn search-button" onClick={handleSearch}>
+              <button onClick={handleSearch} className="btn btn-primary w-100">
                 Search
               </button>
             </div>
@@ -213,7 +240,7 @@ const Home = () => {
               </li>
               <li>
                 <Link to="/education">
-                  <FcReading /> Education
+                  <FaBookReader /> Education
                 </Link>
               </li>
               <li>
@@ -284,11 +311,6 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="container">
-        <EventCarousel />
-        {/* Events Franchise */}
-      </div>
-
       <div className="container border rounded shadow-sm my-4">
         {/* Top Franchise */}
         <div className="d-flex align-items-center my-3">
@@ -303,222 +325,76 @@ const Home = () => {
 
         <div className="my-3">
           <div className="row gx-3">
-            <div className="col-12 col-md-3">
-              <div className="border m-1 shadow-sm rounded">
-                <div className="d-flex align-items-center justify-content-center border m-1 rounded p-2 bg-light">
-                  {/* Image div */}
-                  <img
-                    src="https://franchiseapply.com/admin/uploads/brand_registration/1642240798_2.jpg"
-                    alt="automobile"
-                    className="img-fluid"
-                  />
-                </div>
-                <div className="p-2">
-                  {/* text div */}
-                  <p style={{ fontSize: "12px" }}>Automobiles</p>
-                  <p className="line-clamp-1 fw-semibold">
-                    Quick Auto Service - Two Wheeler Multi Brand Service Centre
-                  </p>
-                  <div className="d-flex justify-content-between py-1 align-items-center">
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      Investment
-                    </p>
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      4 Lacs - 6 lacs
-                    </p>
+            <div className="row">
+              {visibleData.length > 0 ? (
+                visibleData.map(([id, item]) => (
+                  <div className="col-12 col-md-3 mb-4" key={id}>
+                    <div className="border m-1 shadow-sm rounded">
+                      <div className="d-flex align-items-center justify-content-center border m-1 rounded p-2 bg-light">
+                        <img
+                          src={item.details.logo_image}
+                          className="img-fluid image-sec rounded"
+                          alt={item.details.franchise_name}
+                        />
+                      </div>
+
+                      <div className="p-2">
+                        {/* text-div */}
+                        <p style={{ fontSize: "12px" }}>{item.category}</p>
+                        <p className="line-clamp-1 fw-semibold">
+                          {item.details.franchise_name}
+                        </p>
+                        <div className="d-flex justify-content-between py-1 align-items-center">
+                          <p
+                            className="mb-0 fw-bold w-50"
+                            style={{ fontSize: "14px", color: "#6f6f6f" }}
+                          >
+                            Investment :
+                          </p>
+                          <p
+                            className="mb-0 fw-bold line-clamp-1"
+                            style={{ fontSize: "14px", color: "#6f6f6f" }}
+                          >
+                            {item.details.investment_required}
+                          </p>
+                        </div>
+                        <div className="d-flex justify-content-between align-items-center py-1">
+                          <p
+                            className="mb-0 fw-bold w-100"
+                            style={{ fontSize: "14px", color: "#6f6f6f" }}
+                          >
+                            Space req :
+                          </p>
+                          <p
+                            className="mb-0 fw-bold line-clamp-1 w-100"
+                            style={{ fontSize: "14px", color: "#6f6f6f" }}
+                          >
+                            {item.details.required_floor_area}
+                          </p>
+                        </div>
+                        <button
+                          className="btn btn-outline-primary w-100 mt-2"
+                          onClick={() => handleExplore(id)}
+                        >
+                          Explore
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  <div className="d-flex justify-content-between align-items-center py-1">
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      Space req
-                    </p>
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      400 - 600 sq ft
-                    </p>
-                  </div>
-                  <button
-                    // href={card.link}
-                    className="btn btn-outline-primary w-100 mt-2"
-                    // onClick={() => handleExplore(card)}
-                  >
-                    EXPLORE
-                  </button>
-                </div>
-              </div>
+                ))
+              ) : (
+                <h2 className="text-center py-5">Data added soon</h2>
+              )}
             </div>
-            <div className="col-12 col-md-3">
-              <div className="border m-1 shadow-sm rounded">
-                <div className="d-flex align-items-center justify-content-center border m-1 rounded p-2 bg-light">
-                  {/* Image div */}
-                  <img
-                    src="https://franchiseapply.com/admin/uploads/brand_registration/1642240798_2.jpg"
-                    alt="automobile"
-                    className="img-fluid"
-                  />
-                </div>
-                <div className="p-2">
-                  {/* text div */}
-                  <p style={{ fontSize: "12px" }}>Automobiles</p>
-                  <p className="line-clamp-1 fw-semibold">
-                    Quick Auto Service - Two Wheeler Multi Brand Service Centre
-                  </p>
-                  <div className="d-flex justify-content-between py-1 align-items-center">
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      Investment
-                    </p>
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      4 Lacs - 6 lacs
-                    </p>
-                  </div>
-                  <div className="d-flex justify-content-between align-items-center py-1">
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      Space req
-                    </p>
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      400 - 600 sq ft
-                    </p>
-                  </div>
-                  <button
-                    // href={card.link}
-                    className="btn btn-outline-primary w-100 mt-2"
-                    // onClick={() => handleExplore(card)}
-                  >
-                    EXPLORE
-                  </button>
-                </div>
+
+            {/* Load More Button */}
+            {visibleCount < filteredData.length && (
+              <div className="text-center my-4">
+                <button onClick={showMore} className="btn btn-outline-primary">
+                  Load More
+                </button>
               </div>
-            </div>
-            <div className="col-12 col-md-3">
-              <div className="border m-1 shadow-sm rounded">
-                <div className="d-flex align-items-center justify-content-center border m-1 rounded p-2 bg-light">
-                  {/* Image div */}
-                  <img
-                    src="https://franchiseapply.com/admin/uploads/brand_registration/1642240798_2.jpg"
-                    alt="automobile"
-                    className="img-fluid"
-                  />
-                </div>
-                <div className="p-2">
-                  {/* text div */}
-                  <p style={{ fontSize: "12px" }}>Automobiles</p>
-                  <p className="line-clamp-1 fw-semibold">
-                    Quick Auto Service - Two Wheeler Multi Brand Service Centre
-                  </p>
-                  <div className="d-flex justify-content-between py-1 align-items-center">
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      Investment
-                    </p>
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      4 Lacs - 6 lacs
-                    </p>
-                  </div>
-                  <div className="d-flex justify-content-between align-items-center py-1">
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      Space req
-                    </p>
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      400 - 600 sq ft
-                    </p>
-                  </div>
-                  <button
-                    // href={card.link}
-                    className="btn btn-outline-primary w-100 mt-2"
-                    // onClick={() => handleExplore(card)}
-                  >
-                    EXPLORE
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="col-12 col-md-3">
-              <div className="border m-1 shadow-sm rounded">
-                <div className="d-flex align-items-center justify-content-center border m-1 rounded p-2 bg-light">
-                  {/* Image div */}
-                  <img
-                    src="https://franchiseapply.com/admin/uploads/brand_registration/1642240798_2.jpg"
-                    alt="automobile"
-                    className="img-fluid"
-                  />
-                </div>
-                <div className="p-2">
-                  {/* text div */}
-                  <p style={{ fontSize: "12px" }}>Automobiles</p>
-                  <p className="line-clamp-1 fw-semibold">
-                    Quick Auto Service - Two Wheeler Multi Brand Service Centre
-                  </p>
-                  <div className="d-flex justify-content-between py-1 align-items-center">
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      Investment
-                    </p>
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      4 Lacs - 6 lacs
-                    </p>
-                  </div>
-                  <div className="d-flex justify-content-between align-items-center py-1">
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      Space req
-                    </p>
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      400 - 600 sq ft
-                    </p>
-                  </div>
-                  <button
-                    // href={card.link}
-                    className="btn btn-outline-primary w-100 mt-2"
-                    // onClick={() => handleExplore(card)}
-                  >
-                    EXPLORE
-                  </button>
-                </div>
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
@@ -542,7 +418,7 @@ const Home = () => {
                 <div className="d-flex align-items-center justify-content-center border m-1 rounded p-2 bg-light">
                   {/* Image div */}
                   <img
-                    src="https://franchiseapply.com/admin/uploads/brand_registration/1642240798_2.jpg"
+                    src="https://i.ibb.co/v4WSh82k/site-8-img1.png"
                     alt="automobile"
                     className="img-fluid"
                   />
@@ -751,125 +627,6 @@ const Home = () => {
                     EXPLORE
                   </button>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Blog Section */}
-      <div className="container mt-4">
-        <div className="d-flex justify-content-between py-1 blog-div align-items-center">
-          <h5>BLOG AND NEWS</h5>
-          <Link to="/blog" className="link-btn">
-            VIEW ALL
-          </Link>
-        </div>
-
-        <div className="row my-4">
-          <div className="col-12 col-lg-4">
-            <Link to="/blog" className="blog-link">
-              <div className="blog-card">
-                <div className="image-container">
-                  <img
-                    src="https://franchiseapply.com/admin/uploads/blog/408941.jpg"
-                    alt="Education Franchise"
-                    className="card-image"
-                  />
-                  <div className="overlay">
-                    <div className="text-content">
-                      <p className="title">
-                        SEVEN-STEP GUIDE TO LAUNCH AN EDUCATIONAL FRANCHISE
-                        BUSINESS IN INDIA
-                      </p>
-                      <p className="date">09-Sep-2024</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Link>
-
-            <div className="blog-card">
-              <div className="image-container">
-                <img
-                  src="https://franchiseapply.com/admin/uploads/blog/408941.jpg"
-                  alt="Education Franchise"
-                  className="card-image"
-                />
-                <div className="overlay">
-                  <div className="text-content">
-                    <p className="title">
-                      SEVEN-STEP GUIDE TO LAUNCH AN EDUCATIONAL FRANCHISE
-                      BUSINESS IN INDIA
-                    </p>
-                    <p className="date">09-Sep-2024</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="blog-card">
-              <div className="image-container">
-                <img
-                  src="https://franchiseapply.com/admin/uploads/blog/408941.jpg"
-                  alt="Education Franchise"
-                  className="card-image"
-                />
-                <div className="overlay">
-                  <div className="text-content">
-                    <p className="title">
-                      SEVEN-STEP GUIDE TO LAUNCH AN EDUCATIONAL FRANCHISE
-                      BUSINESS IN INDIA
-                    </p>
-                    <p className="date">09-Sep-2024</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-12 col-lg-8">
-            <div className="detail-blog-card">
-              {/* Blog Image */}
-              <div className="image-container">
-                <img
-                  src="https://franchiseapply.com/admin/uploads/blog/408941.jpg"
-                  alt="Education Franchise"
-                  className="card-img-top"
-                />
-              </div>
-
-              {/* Blog Content */}
-              <div className="bottom-card-body">
-                {/* Author & Date */}
-                <div className="d-flex align-items-center text-muted small mb-2">
-                  <span className="me-2">👤 Admin</span>
-                  <span>26-Oct-2024</span>
-                </div>
-
-                {/* Blog Title */}
-                <h5 className="blog-title">
-                  India's Fastest Growing Pre-School - ICON Nurturing Innocence
-                  Preschool
-                </h5>
-
-                {/* Subtitle */}
-                <p className="blog-subtitle">
-                  Cultivating Bright Futures: The Inspirational Journey of Icon
-                  Nurturing Innocence - A Preschool Chain.
-                </p>
-
-                {/* Description */}
-                <p className="blog-mini">
-                  Despite the cut-throat competition in early childhood
-                  education, Icon Nurturing Innocence Preschool is shining high
-                  as a welfare Nurturing Innocence Preschool is shining high as
-                  a welfare reformer...
-                </p>
-
-                {/* Read More */}
-                <Link to="/blog" className="read-more">
-                  READ MORE
-                </Link>
               </div>
             </div>
           </div>
@@ -881,20 +638,19 @@ const Home = () => {
         <Brand />
       </div>
 
-      <div className="container">
-        {/* testimonials */}
+      {/* Blog Section */}
+
+      {/* <div className="container">
         <Testimonials />
       </div>
 
       <div className="container">
         <Gallery />
-        {/* Gallery */}
       </div>
 
       <div className="container">
-        {/* Franchise Magazine */}
         <MagazineCarousel />
-      </div>
+      </div> */}
 
       <div className="container my-4">
         {/* text-section */}

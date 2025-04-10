@@ -77,7 +77,7 @@ const Gallery = () => {
         className="text-center my-4 text-uppercase"
         style={{ color: "#6f6f6f" }}
       >
-        CLIENT TESTIMONIALS
+        Gsllery
       </h2>
       <div className="mb-3">
         <label className="fw-bold me-2">Place:</label>

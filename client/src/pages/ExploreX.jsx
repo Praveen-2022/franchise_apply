@@ -1,27 +1,19 @@
 import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { TestData } from "../constant/TestData";
-import { useForm } from "react-hook-form";
-import { CiStar } from "react-icons/ci";
 import { FaThumbsUp, FaShareAlt } from "react-icons/fa";
+import { CiStar } from "react-icons/ci";
+import { useLocation, useParams } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import "../styles/explore.css";
-import YouMakeLike from "../components/YouMakeLike";
 
 const Explore = () => {
   const { id } = useParams();
-  const currentFranchise = TestData[id];
-  const navigate = useNavigate();
+  const location = useLocation();
+  const card = location.state?.card;
 
-  const relatedFranchises = Object.entries(TestData).filter(
-    ([key, item]) => item.category === currentFranchise.category && key !== id
-  );
-
-  console.log(relatedFranchises);
   const {
     register,
     handleSubmit,
     watch,
-    // eslint-disable-next-line no-unused-vars
     formState: { errors },
   } = useForm();
 
@@ -29,73 +21,24 @@ const Explore = () => {
     console.log("Form Data:", data);
   };
 
-  const isTermsAccepted = watch("terms", false);
-
-  if (!currentFranchise) {
-    return <h2 className="text-center mt-5">Franchise not found</h2>;
-  }
-
-  const {
-    franchise_name,
-    logo_image,
-    banner_image,
-    any_other_investment_needed,
-    brand_fee,
-    description,
-    investment_required,
-    space_required,
-    franchise_outlets,
-    video_url,
-    advertising_marketing,
-    expected_pay_back_period,
-    franchise_traning_programme,
-    the_expected_return_on_investment_to_the_franchisee,
-    preferred_location_for_unit_franchise,
-    single_unit,
-    furniture_and_fixtures,
-    equipments,
-    field_assistance_available_for_franchisees,
-    franchise_term,
-    looking_expansion_in_areas,
-    have_standard_franchise_agreement,
-    website_url,
-    email,
-    required_floor_area,
-    internet_connection,
-    office_staff_required,
-    computer_system,
-    assistance_from_head_office_to_franchisee,
-    required_property_for_this_franchise_opportunity,
-    need_of_it_system,
-    likes,
-    detailed_operating_manuals_for_franchisees,
-  } = currentFranchise.details;
+  // Watch the 'terms' checkbox
+  const isTermsAccepted = watch("terms", false); // default value is false
+  // if (!card) {
+  //   return <p>Card data not available. Please go back and try again.</p>;
+  // }
 
   return (
     <div className="container p-0">
-      <button
-        onClick={() => navigate(-1)}
-        style={{
-          margin: "10px 0rem",
-          background: "transparent",
-          border: "none",
-        }}
-        className=""
-      >
-        ← Back
-      </button>
-
       <div className="row my-4 align-items-center justify-content-center">
         <div className="col-12 col-md-3 border p-2 d-flex align-items-center justify-content-center">
-          <img
-            src={logo_image}
-            className="img-fluid rounded-circle p-3"
+          <img src="https://drive.usercontent.google.com/download?id=1fFn0it_hIygBKP2YNRf14u5fxjO0zJW9&export=view&authuser=0"
+            className="img-fluid rounded-circle"
             style={{ maxHeight: "100px" }}
           />
         </div>
 
         <div className="col-12 col-md-9 ">
-          <h4>{franchise_name}</h4>
+          <h4>Title</h4>
           <div className="border p-4">
             <button className="explore-btn p-2">Business Detail</button>
             <button className="explore-btn p-2">Investment</button>
@@ -108,7 +51,7 @@ const Explore = () => {
         </div>
       </div>
 
-      <div className="container p-0 text-center">
+      <div className="container p-0">
         <div
           className="row  p-4 border border-2"
           style={{
@@ -117,33 +60,35 @@ const Explore = () => {
             borderRadius: "8px",
           }}
         >
-          <div className="col border-end border-black d-flex align-items-center justify-content-center ">
+          <div className="col border-end border-black d-flex align-items-center justify-content-center">
             <div>
               <h6 className="mb-0">Investment Required</h6>
-              <small className="">{investment_required}</small>
+              <small>Investment</small>
             </div>
           </div>
           <div className="col border-end border-black d-flex align-items-center justify-content-center">
             <div>
               <h6 className="mb-0">Space Required</h6>
-              <small>{space_required}</small>
+              <small>card Space</small>
             </div>
           </div>
           <div className="col d-flex align-items-center justify-content-center">
             <div>
               <h6 className="mb-0">Franchise Outlets</h6>
-              <small>{franchise_outlets}</small>
+              <small>170+</small>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="container border p-0 my-4">
-        <img
-          src={banner_image}
-          alt={franchise_name}
-          className="img-fluid w-100 p-3"
-        />
+      <div className="container border border-secondary border-1 rounded my-4">
+        <div className="my-2">
+          <img
+            src="https://www.franchiseapply.com/admin/uploads/brand_registration/1737462792_3.jpg"
+            alt="banner_image"
+            className="img-fluid"
+          />
+        </div>
       </div>
 
       <div className="container p-0 ">
@@ -154,8 +99,35 @@ const Explore = () => {
               <h6 className="fw-semibold border-bottom pb-2">
                 BUSINESS DETAILS
               </h6>
+              <p className="fw-semibold text-decoration-underline font-color">
+                About Us
+              </p>
               <p className="font-color pb-0 description-section">
-                {description}
+                Mr. Gurpreet Singh and Mr. Arvinder Singh are the visionary
+                founders of "Veerji Malai Chaap Wale." They pioneered the
+                concept of integrating chaap into vegetarian cuisine,
+                recognizing the desire of many people for the flavors of
+                non-vegetarian food while staying true to a vegetarian diet.
+                With this insight, they decided to create a unique vegetarian
+                menu that replicates the taste of non-vegetarian dishes. In
+                their quest to make vegetarian food as flavorful and appealing
+                as its non-vegetarian counterparts, they introduced innovative
+                names for their dishes, such as “Veg Chicken,” “Veg Mutton,”
+                “Veg Fish,” “Veg Biryani,” “Sunny Leone Chaap,” “Mia Khalifa
+                Chaap,” and many others. These creative names were designed to
+                capture customers' curiosity and interest. Their mission has
+                always been to provide the rich and savory experience of
+                non-vegetarian cuisine using only vegetarian ingredients. Since
+                the opening of their first outlet in 2012 in Geeta Colony,
+                followed by Laxmi Nagar in Delhi, and several other locations
+                across India, their brand has grown immensely. The demand for
+                their delicious, vegetarian dishes that mimic the taste of
+                non-vegetarian food continues to rise across the country. The
+                journey began with a focus on pure soya, and they have since
+                expanded their offerings while staying true to the core of their
+                concept: delivering mouthwatering vegetarian food that satisfies
+                the cravings of even the most ardent non-veg lovers. Team
+                Franchise Apply
               </p>
             </div>
 
@@ -169,43 +141,41 @@ const Explore = () => {
                   <tbody>
                     <tr>
                       <td>Single Unit</td>
-                      <td>{single_unit}</td>
+                      <td>INR 20 L - INR 22 L</td>
                     </tr>
                     <tr>
                       <td>Brand Fee</td>
-                      <td>{brand_fee}</td>
+                      <td>INR 10 L + 18% GST</td>
                     </tr>
                     <tr>
                       <td>Equipments</td>
-                      <td>{equipments}</td>
+                      <td>INR 4 L + Raw Material INR 2 L</td>
                     </tr>
                     <tr>
                       <td>Furniture And Fixtures</td>
-                      <td>{furniture_and_fixtures}</td>
+                      <td>INR 1 L</td>
                     </tr>
                     <tr>
                       <td>Advertising / Marketing</td>
-                      <td>{advertising_marketing}</td>
+                      <td>INR 1 L</td>
                     </tr>
                     <tr>
                       <td>Expected Pay Back Period</td>
-                      <td>{expected_pay_back_period}</td>
+                      <td>18 Months</td>
                     </tr>
                     <tr>
                       <td>
                         The Expected Return On Investment To The Franchisee
                       </td>
-                      <td>
-                        {the_expected_return_on_investment_to_the_franchisee}
-                      </td>
+                      <td>-</td>
                     </tr>
                     <tr>
                       <td>Any Other Investment Needed</td>
-                      <td>{any_other_investment_needed}</td>
+                      <td>NO</td>
                     </tr>
                     <tr>
                       <td>Looking Expansion In Areas</td>
-                      <td>{looking_expansion_in_areas}</td>
+                      <td>Rajasthan, Gujarat, Maharashtra</td>
                     </tr>
                   </tbody>
                 </table>
@@ -222,23 +192,23 @@ const Explore = () => {
                   <tbody>
                     <tr>
                       <td>Field Assistance Available For Franchisees:</td>
-                      <td>{field_assistance_available_for_franchisees}</td>
+                      <td>YES</td>
                     </tr>
                     <tr>
                       <td>Franchise Traning programme:</td>
-                      <td>{franchise_traning_programme}</td>
+                      <td>INR 10 L + 18% GST</td>
                     </tr>
                     <tr>
                       <td>Detailed Operating Manuals For Franchisees:</td>
-                      <td>{detailed_operating_manuals_for_franchisees}</td>
+                      <td>Yes</td>
                     </tr>
                     <tr>
                       <td>Need of IT System:</td>
-                      <td>{need_of_it_system}</td>
+                      <td>Computer</td>
                     </tr>
                     <tr>
                       <td>Assistance From Head Office To Franchisee:</td>
-                      <td>{assistance_from_head_office_to_franchisee}</td>
+                      <td>YES</td>
                     </tr>
                   </tbody>
                 </table>
@@ -255,29 +225,27 @@ const Explore = () => {
                   <tbody>
                     <tr>
                       <td>Required Property For This Franchise Opportunity:</td>
-                      <td>
-                        {required_property_for_this_franchise_opportunity}
-                      </td>
+                      <td>Commercial Or High Residential</td>
                     </tr>
                     <tr>
                       <td>Required Floor Area:</td>
-                      <td>{required_floor_area}</td>
+                      <td>200 Sq Ft - 250 Fq Ft</td>
                     </tr>
                     <tr>
                       <td>Preferred Location For Unit Franchise:</td>
-                      <td>{preferred_location_for_unit_franchise}</td>
+                      <td>Mall,Commercial Building</td>
                     </tr>
                     <tr>
                       <td>Office Staff Required:</td>
-                      <td>{office_staff_required}</td>
+                      <td>Yes</td>
                     </tr>
                     <tr>
                       <td>Computer / System :</td>
-                      <td>{computer_system}</td>
+                      <td>Yes(One Laptop)</td>
                     </tr>
                     <tr>
                       <td>Internet Connection :</td>
-                      <td>{internet_connection}</td>
+                      <td>Yes</td>
                     </tr>
                   </tbody>
                 </table>
@@ -295,22 +263,17 @@ const Explore = () => {
                     <tbody>
                       <tr>
                         <td>Email</td>
-                        <td>{email}</td>
+                        <td>Email</td>
                       </tr>
                       <tr>
                         <td>Website Url</td>
                         <td>
                           <a
-                            href={
-                              website_url.startsWith("http://") ||
-                              website_url.startsWith("https://")
-                                ? website_url
-                                : `https://${website_url}`
-                            }
+                            href="https://www.veerjifoods.com/"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            {website_url}
+                            www.veerjifoods.com
                           </a>
                         </td>
                       </tr>
@@ -328,14 +291,20 @@ const Explore = () => {
                   <table className="table table-bordered">
                     <tbody>
                       <tr>
-                        <td className="w-full">
-                          Have standard Franchise Agreement:
-                        </td>
-                        <td>{have_standard_franchise_agreement}</td>
+                        <td>Email</td>
+                        <td>admin@jaishreejewellers.in</td>
                       </tr>
                       <tr>
-                        <td>Franchise Term:</td>
-                        <td>{franchise_term}</td>
+                        <td>Website Url</td>
+                        <td>
+                          <a
+                            href="https://www.veerjifoods.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            www.veerjifoods.com
+                          </a>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -354,7 +323,7 @@ const Explore = () => {
                     <CiStar key={i} className="star" />
                   ))}
                 </div>
-                <span className="likes">{likes}</span>
+                <span className="likes">3k Likes</span>
               </div>
 
               {/* Buttons Section */}
@@ -473,14 +442,6 @@ const Explore = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      <div>
-        <YouMakeLike
-          currentId={id}
-          category={currentFranchise?.category}
-          data={TestData}
-        />
       </div>
     </div>
   );
