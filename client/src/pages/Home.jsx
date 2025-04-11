@@ -20,6 +20,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Home.css";
 
 import { TestData } from "../constant/TestData";
+import TopFranchise from "../components/TopFranchise";
 const Home = () => {
   const navigate = useNavigate();
 
@@ -155,7 +156,7 @@ const Home = () => {
               </select>
             </div>
             <div className="col p-0">
-              <button onClick={handleSearch} className="btn btn-primary w-100">
+              <button onClick={handleSearch} className="btn search-button w-100">
                 Search
               </button>
             </div>
@@ -399,243 +400,13 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="container border rounded shadow-sm my-4">
-        {/* Top Franchise */}
-        <div className="d-flex align-items-center my-3">
-          <div className="franchise-box text-uppercase">
-            Top Premium Franchise Opportunities
-          </div>
-          <div className="franchise-lines w-100">
-            <div className="line"></div>
-            <div className="line"></div>
-          </div>
-        </div>
-
-        <div className="my-3">
-          <div className="row gx-3">
-            <div className="col-12 col-md-3">
-              <div className="border m-1 shadow-sm rounded">
-                <div className="d-flex align-items-center justify-content-center border m-1 rounded p-2 bg-light">
-                  {/* Image div */}
-                  <img
-                    src="https://i.ibb.co/v4WSh82k/site-8-img1.png"
-                    alt="automobile"
-                    className="img-fluid"
-                  />
-                </div>
-                <div className="p-2">
-                  {/* text div */}
-                  <p style={{ fontSize: "12px" }}>Automobiles</p>
-                  <p className="line-clamp-1 fw-semibold">
-                    Quick Auto Service - Two Wheeler Multi Brand Service Centre
-                  </p>
-                  <div className="d-flex justify-content-between py-1 align-items-center">
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      Investment
-                    </p>
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      4 Lacs - 6 lacs
-                    </p>
-                  </div>
-                  <div className="d-flex justify-content-between align-items-center py-1">
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      Space req
-                    </p>
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      400 - 600 sq ft
-                    </p>
-                  </div>
-                  <button
-                    // href={card.link}
-                    className="btn btn-outline-primary w-100 mt-2"
-                    // onClick={() => handleExplore(card)}
-                  >
-                    EXPLORE
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="col-12 col-md-3">
-              <div className="border m-1 shadow-sm rounded">
-                <div className="d-flex align-items-center justify-content-center border m-1 rounded p-2 bg-light">
-                  {/* Image div */}
-                  <img
-                    src="https://franchiseapply.com/admin/uploads/brand_registration/1642240798_2.jpg"
-                    alt="automobile"
-                    className="img-fluid"
-                  />
-                </div>
-                <div className="p-2">
-                  {/* text div */}
-                  <p style={{ fontSize: "12px" }}>Automobiles</p>
-                  <p className="line-clamp-1 fw-semibold">
-                    Quick Auto Service - Two Wheeler Multi Brand Service Centre
-                  </p>
-                  <div className="d-flex justify-content-between py-1 align-items-center">
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      Investment
-                    </p>
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      4 Lacs - 6 lacs
-                    </p>
-                  </div>
-                  <div className="d-flex justify-content-between align-items-center py-1">
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      Space req
-                    </p>
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      400 - 600 sq ft
-                    </p>
-                  </div>
-                  <button
-                    // href={card.link}
-                    className="btn btn-outline-primary w-100 mt-2"
-                    // onClick={() => handleExplore(card)}
-                  >
-                    EXPLORE
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="col-12 col-md-3">
-              <div className="border m-1 shadow-sm rounded">
-                <div className="d-flex align-items-center justify-content-center border m-1 rounded p-2 bg-light">
-                  {/* Image div */}
-                  <img
-                    src="https://franchiseapply.com/admin/uploads/brand_registration/1642240798_2.jpg"
-                    alt="automobile"
-                    className="img-fluid"
-                  />
-                </div>
-                <div className="p-2">
-                  {/* text div */}
-                  <p style={{ fontSize: "12px" }}>Automobiles</p>
-                  <p className="line-clamp-1 fw-semibold">
-                    Quick Auto Service - Two Wheeler Multi Brand Service Centre
-                  </p>
-                  <div className="d-flex justify-content-between py-1 align-items-center">
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      Investment
-                    </p>
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      4 Lacs - 6 lacs
-                    </p>
-                  </div>
-                  <div className="d-flex justify-content-between align-items-center py-1">
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      Space req
-                    </p>
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      400 - 600 sq ft
-                    </p>
-                  </div>
-                  <button
-                    // href={card.link}
-                    className="btn btn-outline-primary w-100 mt-2"
-                    // onClick={() => handleExplore(card)}
-                  >
-                    EXPLORE
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="col-12 col-md-3">
-              <div className="border m-1 shadow-sm rounded">
-                <div className="d-flex align-items-center justify-content-center border m-1 rounded p-2 bg-light">
-                  {/* Image div */}
-                  <img
-                    src="https://franchiseapply.com/admin/uploads/brand_registration/1642240798_2.jpg"
-                    alt="automobile"
-                    className="img-fluid"
-                  />
-                </div>
-                <div className="p-2">
-                  {/* text div */}
-                  <p style={{ fontSize: "12px" }}>Automobiles</p>
-                  <p className="line-clamp-1 fw-semibold">
-                    Quick Auto Service - Two Wheeler Multi Brand Service Centre
-                  </p>
-                  <div className="d-flex justify-content-between py-1 align-items-center">
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      Investment
-                    </p>
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      4 Lacs - 6 lacs
-                    </p>
-                  </div>
-                  <div className="d-flex justify-content-between align-items-center py-1">
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      Space req
-                    </p>
-                    <p
-                      className="mb-0 fw-bold"
-                      style={{ fontSize: "14px", color: "#6f6f6f" }}
-                    >
-                      400 - 600 sq ft
-                    </p>
-                  </div>
-                  <button
-                    // href={card.link}
-                    className="btn btn-outline-primary w-100 mt-2"
-                    // onClick={() => handleExplore(card)}
-                  >
-                    EXPLORE
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div>
+        <TopFranchise />
       </div>
 
       <div className="container">
         {/* New Arrivals Brand */}
-        <Brand />
+        {/* <Brand /> */}
       </div>
 
       {/* Blog Section */}

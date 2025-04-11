@@ -4,6 +4,7 @@ import { TestData } from "../constant/TestData";
 import { useForm } from "react-hook-form";
 import { CiStar } from "react-icons/ci";
 import { FaThumbsUp, FaShareAlt } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
 import "../styles/explore.css";
 // import YouMakeLike from "../components/YouMakeLike";
 
@@ -21,15 +22,44 @@ const Explore = () => {
     register,
     handleSubmit,
     watch,
-    // eslint-disable-next-line no-unused-vars
+    reset,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log("Form Data:", data);
-  };
-
   const isTermsAccepted = watch("terms", false);
+
+  const onSubmit = (data) => {
+    const templateParams = {
+      full_name: data.fullName,
+      email: data.email,
+      mobile: data.mobile,
+      country: data.country,
+      state: data.state,
+      city: data.city,
+      zipcode: data.zipcode,
+      address: data.address,
+      franchise_name: franchise_name, // Inject franchise name here
+    };
+
+    emailjs
+      .send(
+        "service_ljz4sej",
+        "template_vqsvfw9",
+        templateParams,
+        "_imW-V2n6pid_YxTE"
+      )
+      .then(
+        (result) => {
+          console.log("Email sent successfully!", result.text);
+          alert("Form submitted successfully!");
+          reset(); // clear form
+        },
+        (error) => {
+          console.error("Email sending failed:", error.text);
+          alert("Failed to send form. Please try again.");
+        }
+      );
+  };
 
   if (!currentFranchise) {
     return <h2 className="text-center mt-5">Franchise not found</h2>;
@@ -371,23 +401,26 @@ const Explore = () => {
               </div>
             </div>
 
-            <div className="my-4 border-color p-3">
-              <h6 className="mb-3">APPLY FOR FRANCHISE</h6>
+            <div className="my-4 border p-3">
+              <h6 className="text-uppercase text-center">{franchise_name}</h6>
+              <h6 className="mb-3 border-bottom border-1 text-uppercase text-center ">
+                APPLY FOR FRANCHISE
+              </h6>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <input
-                  {...register("fullName")}
+                  {...register("fullName", { required: true })}
                   type="text"
                   className="form-control mb-2"
                   placeholder="Full Name"
                 />
                 <input
-                  {...register("email")}
+                  {...register("email", { required: true })}
                   type="email"
                   className="form-control mb-2"
                   placeholder="Email"
                 />
                 <input
-                  {...register("mobile")}
+                  {...register("mobile", { required: true })}
                   type="tel"
                   className="form-control mb-2"
                   placeholder="Mobile Number"
@@ -397,28 +430,31 @@ const Explore = () => {
                   <option value="India">India</option>
                 </select>
 
-                <select {...register("state")} className="form-select mb-2">
+                <select
+                  {...register("state", { required: true })}
+                  className="form-select mb-2"
+                >
                   <option value="">Select State</option>
                   <option value="Maharashtra">Maharashtra</option>
                   <option value="Delhi">Delhi</option>
                   <option value="Karnataka">Karnataka</option>
-                  {/* Add more states */}
+                  {/* Add more states as needed */}
                 </select>
 
                 <input
-                  {...register("city")}
+                  {...register("city", { required: true })}
                   type="text"
                   className="form-control mb-2"
                   placeholder="City"
                 />
                 <input
-                  {...register("zipcode")}
+                  {...register("zipcode", { required: true })}
                   type="text"
                   className="form-control mb-2"
                   placeholder="Zipcode"
                 />
                 <textarea
-                  {...register("address")}
+                  {...register("address", { required: true })}
                   className="form-control mb-2"
                   placeholder="Address"
                   rows="3"
@@ -445,45 +481,17 @@ const Explore = () => {
                   APPLY NOW
                 </button>
               </form>
-
-              <h6 className="mt-4">More Related Brand</h6>
-              <ul className="list-unstyled">
-                {[
-                  "Chicka Litti",
-                  "Veer Ji Malai Chaap Wale",
-                  "Waff hill",
-                  "Panwaadi",
-                  "Winooars pizza",
-                  "Mr. Sandwich",
-                  "Fiery Pot",
-                  "WRAPKING",
-                  "GRILLKARLO",
-                  "90 Degrees",
-                ].map((brand, index) => (
-                  <li key={index}>
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      id="terms"
-                    />{" "}
-                    {brand}
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
         </div>
       </div>
-
-      {/* <div>
-        <YouMakeLike
-          currentId={id}
-          category={currentFranchise?.category}
-          data={TestData}
-        />
-      </div> */}
     </div>
   );
 };
 
 export default Explore;
+
+// service_ljz4sej
+// Connected as praveenvbspu2022@gmail.com
+// template_wijgpjk
+// _imW-V2n6pid_YxTE
