@@ -90,7 +90,7 @@ const Home = () => {
     if (selectedInvestment && selectedInvestment !== "Investment Range") {
       const [min, max] = parseInvestment(selectedInvestment);
 
-      filtered = filtered.filter(([_, item]) => {
+      filtered = filtered.filter(([_id, item]) => {
         const [itemMin, itemMax] = parseInvestment(
           item.details.investment_required
         );

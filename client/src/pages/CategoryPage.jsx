@@ -24,6 +24,7 @@ const CategoryPage = () => {
 
   const formattedCategory = name.replace(/-/g, " ").toLowerCase();
 
+  // eslint-disable-next-line no-unused-vars
   const filteredData = Object.entries(TestData).filter(([id, franchise]) => {
     return normalize(franchise.category || "") === formattedCategory;
   });

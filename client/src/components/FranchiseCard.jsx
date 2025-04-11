@@ -7,7 +7,6 @@ const FranchiseCard = ({ id, details = {} }) => {
   const {
     logo_image,
     franchise_name,
-    description,
     category,
     investment_required,
     required_floor_area,

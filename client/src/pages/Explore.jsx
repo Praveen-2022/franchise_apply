@@ -23,6 +23,8 @@ const Explore = () => {
     handleSubmit,
     watch,
     reset,
+    
+    // eslint-disable-next-line no-unused-vars
     formState: { errors },
   } = useForm();
 
@@ -75,6 +77,7 @@ const Explore = () => {
     investment_required,
     space_required,
     franchise_outlets,
+    // eslint-disable-next-line no-unused-vars
     video_url,
     advertising_marketing,
     expected_pay_back_period,
