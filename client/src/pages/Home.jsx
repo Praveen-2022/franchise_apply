@@ -156,7 +156,10 @@ const Home = () => {
               </select>
             </div>
             <div className="col p-0">
-              <button onClick={handleSearch} className="btn search-button w-100">
+              <button
+                onClick={handleSearch}
+                className="btn search-button w-100"
+              >
                 Search
               </button>
             </div>

@@ -133,7 +133,7 @@ const CategoryPage = () => {
       <div className="row">
         {filteredData.length > 0 ? (
           filteredData.map(([id, franchise]) => (
-            <div key={id} className="col-md-4 col-sm-6 mb-4">
+            <div key={id} className="col-md-3 col-sm-1 mb-4">
               <FranchiseCard id={id} details={franchise.details} />
             </div>
           ))
